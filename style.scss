@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: rgb(245, 245, 245);
+
+    header {
+        padding: 1em 2em;
+        text-align: center;
+        font-size: 1.5rem;
+        box-shadow: 0px 0px 10px 0px rgba(209,207,209,1);
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 3em 6em;
+
+        input {
+            appearance: none;
+            outline: none;
+            border: none;
+            box-shadow: 0px 0px 10px 0px rgba(209,207,209,1);
+            width: 50vh;
+            padding: 1em 2em;
+            font-size: 1rem;
+        }
+
+        .select {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px 0px rgba(209,207,209,1);
+            
+            &:after {
+                content: "\25BC";
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 1em;
+                pointer-events: none;
+                transition: all .3s ease;
+            }
+
+            select {
+                appearance: none;
+                outline: none;
+                border: none;
+                width: 20vh;
+                cursor: pointer;
+                padding: 1em 2em;
+                font-size: 1rem;
+            }
+        }
+
+    }
+
+    .grid-container {
+        padding: 0em 6em 0 6em;
+        display: grid;
+        gap: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        .box {
+            box-shadow: 0px 0px 10px 0px rgba(209,207,209,1);
+
+            img {
+                width: 100%;
+                border-radius: 5px 5px 0 0;
+            }
+
+            .info {
+                padding: 1em;
+
+                h3 {
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    padding-bottom: .75rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+
+            }
+
+
+        }
+    }
+
+}

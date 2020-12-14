@@ -1,15 +1,8 @@
 const countriesListDiv = document.querySelector(".grid-container")
 const searchBar = document.getElementById("searchBar")
+const filter = document.getElementById("filter")
 let countriesList = [];
-
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value
-    const filteredCountries = countriesList.filter((country) => {
-        return (country.name.toLowerCase().includes(searchString))
-    })
-
-    displayCountries(filteredCountries)
-})
+let filterSelected = "";
 
 fetch("https://restcountries.eu/rest/v2/all").then((response) => {
     return response.json();
@@ -18,6 +11,24 @@ fetch("https://restcountries.eu/rest/v2/all").then((response) => {
     countriesList = countries;
 }).catch((error) => {
     console.error("Errore API: ", error)
+})
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value
+    const filteredCountries = countriesList.filter((country) => {
+        return (country.name.toLowerCase().includes(searchString) && country.region.includes(filterSelected))
+    })
+
+    displayCountries(filteredCountries)
+})
+
+filter.addEventListener('click', (e) => {
+    filterSelected = e.target.value
+    const filteredCountries = countriesList.filter((country) => {
+        return (country.region.includes(e.target.value))
+    })
+
+    displayCountries(filteredCountries)
 })
 
 const displayCountries = (countries) => {
